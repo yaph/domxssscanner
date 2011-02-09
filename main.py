@@ -21,6 +21,7 @@ class MainHandler(gae.BaseHandler):
             self.set_template_value('url', url)
             response = gae.HTTP().request(url)
             if response:
+                # TODO check response type and don't call get_script_urls if javascript
                 html = response.content
                 self.set_template_value('response_text', html)
                 script_urls = self.get_script_urls(url, html)
