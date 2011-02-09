@@ -1,0 +1,5 @@
+*.pyc
+lib/
+index.yaml
+gae_utils.py
+static/js/lib/
