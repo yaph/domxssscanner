@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/static/favicon.ico">
+  <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" href="/static/css/style.css">
   <script src="/static/js/lib/modernizr-1.6.min.js"></script>
 </head>
@@ -33,6 +33,10 @@
     <div id="result">
       Scanning URL: {{ url|escape }}
     </div>
+    {% endif %}
+
+    {% if response_text %}
+      <form><textarea>{{ response_text }}</textarea></form>
     {% endif %}
 
     {% if script_urls %}

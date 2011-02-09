@@ -21,6 +21,7 @@ class MainHandler(gae.BaseHandler):
             response = gae.HTTP().request(url)
             if response:
                 html = response.content
+                self.set_template_value('response_text', html)
                 self.domxss_scan(html)
                 script_urls = self.get_script_urls(url, html)
                 self.set_template_value('script_urls', script_urls)
