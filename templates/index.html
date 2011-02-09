@@ -1,3 +1,4 @@
+{% spaceless %}
 <!doctype html>  
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
 <!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
@@ -12,6 +13,11 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" href="/static/css/style.css">
   <script src="/static/js/lib/modernizr-1.6.min.js"></script>
+  {% if script_urls %}
+  <script type="text/javascript">
+    var script_urls = '{{ script_urls }}';
+  </script>
+  {% endif %}
 </head>
 <body lang="en">
 
@@ -22,45 +28,10 @@
 
   <div id="main" role="main">
 
-    <div id="url_form">
-      <form action="/" method="GET">
-        <input name="url" id="url" type="url" value="http://">
-        <input type="submit" value="Start scan">
-      </form>
-    </div>
+    {% include 'url_form.html' %}
 
-    {% if url %}
-    <div id="result">
-      Scanning URL: {{ url|escape }}
-    </div>
-    {% endif %}
+    {% include 'response.html' %}
 
-    {% if response_text %}
-      <form><textarea>{{ response_text }}</textarea></form>
-    {% endif %}
-
-    {% if script_urls %}
-    <div id="script_urls">
-      {{ script_urls }}
-    </div>
-    {% endif %}
-
-    {% if sources %}
-    <div id="sources">
-      {% for r in sources %}
-        <pre>{{ r.match }}</pre>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    {% if sinks %}
-    <div id="sinks">
-      {% for r in sinks %}
-        <pre>{{ r.match }}</pre>
-      {% endfor %}
-    </div>
-    {% endif %}
-  
   </div>
 
   <footer>
@@ -69,7 +40,7 @@
 </div>
 
 <script src="//ajax.googleapis.com/ajax/lib/jquery/1.5.0/jquery.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="js/lib/jquery-1.5.0.js"%3E%3C/script%3E'))</script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/static/js/lib/jquery-1.5.0.js"%3E%3C/script%3E'))</script>
 <script src="/static/js/script.js"></script>
 <!--[if lt IE 7 ]>
   <script src="/static/js/lib/dd_belatedpng.js"></script>
@@ -77,3 +48,4 @@
 <![endif]-->
 </body>
 </html>
+{% endspaceless %}

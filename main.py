@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
+from django.utils import simplejson
 import gae_utils as gae
 from lib.BeautifulSoup import BeautifulSoup, SoupStrainer
 import urlparse
@@ -22,10 +23,12 @@ class MainHandler(gae.BaseHandler):
             if response:
                 html = response.content
                 self.set_template_value('response_text', html)
-                self.domxss_scan(html)
                 script_urls = self.get_script_urls(url, html)
-                self.set_template_value('script_urls', script_urls)
-        self.generate('text/html', 'index.html')
+                self.set_template_value('script_urls', simplejson.dumps(script_urls))
+        if self.is_ajax():
+            self.generate('text/javascript', 'response.html')
+        else:
+            self.generate('text/html', 'index.html')
 
     def get_script_urls(self, url, html):
         script_urls = []
