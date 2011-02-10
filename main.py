@@ -7,29 +7,11 @@ from lib.BeautifulSoup import BeautifulSoup, SoupStrainer
 import urlparse
 import re
 
-class MainHandler(gae.BaseHandler):
-
+class BaseHandler(gae.BaseHandler):
     re_test = re.compile('<a href="([^"]+)"', re.S)
     # regular expressions from https://code.google.com/p/domxsswiki/wiki/FindingDOMXSS
     re_domxss_sources = re.compile('(location\s*[\[.])|([.\[]\s*["\']?\s*(arguments|dialogArguments|innerHTML|write(ln)?|open(Dialog)?|showModalDialog|cookie|URL|documentURI|baseURI|referrer|name|opener|parent|top|content|self|frames)\W)|(localStorage|sessionStorage|Database)')
     re_domxss_sinks = re.compile('((src|href|data|location|code|value|action)\s*["\'\]]*\s*\+?\s*=)|((replace|assign|navigate|getResponseHeader|open(Dialog)?|showModalDialog|eval|evaluate|execCommand|execScript|setTimeout|setInterval)\s*["\'\]]*\s*\()')
-
-    def get(self):
-        self.set_template_value('title', 'DOMXSS Scanner')
-        url = self.get_param('url', '', 'url')
-        if url:
-            self.set_template_value('url', url)
-            response = gae.HTTP().request(url)
-            if response:
-                # TODO check response type and don't call get_script_urls if javascript
-                html = response.content
-                self.set_template_value('response_text', html)
-                script_urls = self.get_script_urls(url, html)
-                self.set_template_value('script_urls', simplejson.dumps(script_urls))
-        if self.is_ajax():
-            self.generate('text/javascript', 'response.html')
-        else:
-            self.generate('text/html', 'index.html')
 
     def get_script_urls(self, url, html):
         script_urls = []
@@ -61,8 +43,34 @@ class MainHandler(gae.BaseHandler):
     def get_domxss_sinks(self, text):
         return self.get_domxss_list(text, self.re_domxss_sinks)
 
+class MainHandler(BaseHandler):
+    def get(self):
+        self.set_template_value('title', 'DOMXSS Scanner')
+        self.generate('text/html', 'index.html')
+
+class ScanHandler(BaseHandler):
+    def get(self):
+        self.set_template_value('title', 'DOMXSS Scanner')
+        url = self.get_param('url', '', 'url')
+        if url:
+            self.set_template_value('url', url)
+            response = gae.HTTP().request(url)
+            if response:
+                # TODO check response type and don't call get_script_urls if javascript
+                html = response.content
+                self.set_template_value('response_text', html)
+                script_urls = self.get_script_urls(url, html)
+                self.set_template_value('script_urls', simplejson.dumps(script_urls))
+        if self.is_ajax():
+            self.generate('text/javascript', 'response.html')
+        else:
+            self.generate('text/html', 'scan.html')
+
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)], debug=True)
+    application = webapp.WSGIApplication([
+                                          ('/', MainHandler),
+                                          ('/scan.*', ScanHandler),
+                                          ], debug=True)
     util.run_wsgi_app(application)
 
 if __name__ == '__main__':
