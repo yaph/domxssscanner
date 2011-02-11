@@ -45,12 +45,13 @@ class BaseHandler(gae.BaseHandler):
 
 class MainHandler(BaseHandler):
     def get(self):
-        self.set_template_value('title', 'DOMXSS Scanner')
+        self.set_template_value('title', 'DOMXSS Scanner - Find DOM based XSS Security Vulnerabilities')
         self.generate('text/html', 'index.html')
 
 class ScanHandler(BaseHandler):
     def get(self):
-        self.set_template_value('title', 'DOMXSS Scanner')
+        title = 'DOMXSS Scanner - Scan %s'
+
         url = self.get_param('url', '', 'url')
         if url:
             self.set_template_value('url', url)
@@ -61,6 +62,11 @@ class ScanHandler(BaseHandler):
                 self.set_template_value('response_text', html)
                 script_urls = self.get_script_urls(url, html)
                 self.set_template_value('script_urls', simplejson.dumps(script_urls))
+        else:
+            url = ''
+
+        self.set_template_value('title', title % url)
+
         if self.is_ajax():
             self.generate('text/javascript', 'response.html')
         else:

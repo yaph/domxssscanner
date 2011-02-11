@@ -1,6 +1,6 @@
 <div class="response">
 {% if url %}
-  <h2 class="request_url">Results from scanning URL: {{ url|escape }}</h2>
+  <h2 class="request_url">Results from scanning URL: <a href="{{ url|escape }}">{{ url|escape }}</a></h2>
 {% endif %}
 
 {% if response_text %}

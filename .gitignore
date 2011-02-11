@@ -3,3 +3,4 @@ lib/
 index.yaml
 gae_utils.py
 static/js/lib/
+static/css/lib/

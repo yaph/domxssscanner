@@ -1,1 +1,41 @@
 {% extends 'base.html' %}
+
+{% block content %}
+<h2>What is DOMXSS Scanner?</h2>
+<p>DOMXSS Scanner is an online tool that helps you find potential DOM based XSS security vulnerabilities. Enter a URL to scan the document and the included scripts for DOMXSS sources and sinks in the source code of Web pages and JavaScript files.</p>
+<hr>
+<h2>What is DOM Based XSS?</h2>
+<blockquote><p>DOM Based XSS (or as it is called in some texts, “type-0 XSS”) is an XSS attack wherein the attack payload is executed as a result of modifying the DOM “environment” in the victim’s browser used by the original client side script, so that the client side code runs in an “unexpected” manner. That is, the page itself (the HTTP response that is) does not change, but the client side code contained in the page executes differently due to the malicious modifications that have occurred in the DOM environment.</p></blockquote>
+<p>Source: <a href="http://www.owasp.org/index.php/DOM_Based_XSS">OWASP DOM based XSS</a></p>
+<hr>
+{% endblock %}
+
+{% block featured %}
+
+<div id="featured" class="container_12 clearfix">
+
+<div class="grid_4">
+<h2>Learn About DOMXSS</h2>
+<ul>
+<li><a href="https://code.google.com/p/domxsswiki/">Dom XSS Test Cases Wiki</a></li>
+<li><a href="http://www.webappsec.org/projects/articles/071105.shtml">DOM Based Cross Site Scripting or XSS of the Third Kind</a></li>
+<li><a href="http://blog.mindedsecurity.com/2010/09/twitter-domxss-wrong-fix-and-something.html">A Twitter DomXss, a wrong fix and something more</a></li>
+<li><a href="http://it-republik.de/php/artikel/DOMXSS---Angriffe-aus-dem-Nirgendwo-3565.html">DOMXSS - Angriffe aus dem Nirgendwo</a></li>
+</ul>
+</div>
+
+<div class="grid_4">
+<h2>XSS News from Google</h2>
+<div id="google_rss"></div>
+<script src="https://www.google.com/jsapi?key=ABQIAAAAmrEfcOrtp2tfQZWrdKRqiRQiWVq29axjBET8aZ3BK7RfzzxqahR_H1S23sdooIgqihgBRMSRzuZazA" type="text/javascript"></script>
+<script src="{{ base_path }}/static/js/google_rss.js"></script>
+</div>
+
+<div class="grid_4">
+<h2>Spread DOMXSS Scanner</h2>
+<div class="like_widget"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
+<div class="like_widget"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fdomxssscanner.appspot.com%2F&amp;layout=box_count&amp;show_faces=false&amp;width=62&amp;action=like&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:62px; height:65px;" allowTransparency="true"></iframe></div>
+</div>
+
+</div>
+{% endblock %}

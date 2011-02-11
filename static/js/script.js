@@ -5,7 +5,7 @@ jQuery(function($) {
     for (url in urls) {
       var request_url = "/scan?url=" + encodeURIComponent(urls[url]);
       $.get(request_url, function(data) {
-        $('#main').append(data);
+        $('#content').append(data);
         DOMXSS.scanResponse($);
       });
     }
@@ -45,10 +45,11 @@ var DOMXSS = {
       //var text = $(elt).text(DOMXSS.highlight(elt.innerHTML)).html();
       var text = DOMXSS.markUp(DOMXSS.highlight(elt.innerHTML));
       var p = $(elt).parent();
-      $(elt).remove();
-      p.append('<h3 class="domxss_source">Number of sources found: ' + DOMXSS.source_count + '</h3>');
-      p.append('<h3 class="domxss_sink">Number of sinks found: ' + DOMXSS.sink_count + '</h3>');
-      p.append('<pre class="domxss_highlighted">' + text + '</pre>');
+      var t = p.parent();
+      p.remove();
+      t.append('<h3>Number of sources found: <span class="domxss_source">' + DOMXSS.source_count + '</span></h3>');
+      t.append('<h3>Number of sinks found: <span class="domxss_sink">' + DOMXSS.sink_count + '</span></h3>');
+      t.append('<pre class="domxss_highlighted">' + text + '</pre>');
     });
   }
 };

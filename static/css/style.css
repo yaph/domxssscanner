@@ -59,27 +59,6 @@ input, select { vertical-align:middle; }
 
 /* END RESET CSS */
 
-
-/* font normalization inspired by  from the YUI Library's fonts.css: developer.yahoo.com/yui/ */
-body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
-select, input, textarea, button { font:99% sans-serif; }
-
-/* normalize monospace sizing
- * en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
-pre, code, kbd, samp { font-family: monospace, sans-serif; }
-
-/*
- * minimal base styles
- */
-
-
-body, select, input, textarea {
-  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
-  color: #444;
-  /* set your base font here, to apply evenly */
-  /* font-family: Georgia, serif;  */
-}
-
 /* always force a scrollbar in non-IE: */
 html { overflow-y: scroll; }
 
@@ -155,52 +134,93 @@ button {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
 /* Ramiro Gomez */
+select, input, textarea, button { font:99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+body, select, input, textarea {
+  color: #444;
+  font-family: Cabin, serif;
+}
 body {
-color:#205020;
-min-height:900px;
+font-size:1.1em;
+color:#3d5c3d;
 background: #000; /* old browsers */
 background: -moz-linear-gradient(top, #000 0%, #0a0a0a 100%); /* firefox */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000), color-stop(100%,#0a0a0a)); /* webkit */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000', endColorstr='#0a0a0a',GradientType=0 ); /* ie */
 }
-
 /* headers (h1,h2,etc) have no default font-size or margin. define those yourself. */
-h1,h2,h3,h4,h5,h6 { font-weight: bold; font-size:1.2em;}
+h1,h2,h3,h4,h5,h6 {
+font-weight: bold;
+font-size:1.2em;
+}
 h1 { font-size:2em;}
 h2 { font-size:1.2em;}
 textarea {width:100%;height:300px;}
+hr {
+color:#000;
+border-color: #222;
+background-color: #222;
+height:1px;
+border:1px;
+}
+blockquote {
+margin: .5em 1em;
+padding-left: 1em;
+font-family: monotype;
+font-style: oblique;
+}
+.title a {
+font-size:1.3em;
+text-decoration:none;
+color:#3d5c3d;
+}
 
 #container {width:960px; margin:0 auto;}
-#page_header {
+#page_header,
+#page_footer {
 text-align:center;
+margin:10px 0 0 0;
+}
+#featured .grid_4 {
+padding:5px 0;
+}
+#page_footer {
+color:#3d5c3d;
+font-size:.9em;
 }
 /* search form */
 #url_form {
-font-size:2.5em;
+font-size:1.8em;
+margin:5px 0 15px 0;
 }
 #url_form .url {
-width:666px;
+width:60%;
 }
 #url_form .button {
-
+margin:10px 0;
 }
-
+.like_widget {
+margin:5px 0 10px;
+text-align:center;
+}
 /* highlighted response text */
 .response {
 width:100%;
 padding:10px;
--moz-border-radius: 10px;
-border-radius: 10px;
 background: #000;
 }
 .domxss_highlighted {
 height:300px;
 overflow:auto;
-padding:10px;
+padding:5px;
+margin: 5px 0;
+color:#0f0;
 background: #0a0a0a;
+border: 2px ridge #3d5c3d;
+font: 1.18em monospace;
 }
-.domxss_sink {background-color:yellow;}
-.domxss_source {background-color:red;}
+.domxss_sink {background-color:#9B7D00;}
+.domxss_source {background-color:#900;}
 
 /*
  * Non-semantic helper classes: please define your styles before this section.
