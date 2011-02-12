@@ -81,7 +81,7 @@ def main():
     application = webapp.WSGIApplication([
                                           ('/', MainHandler),
                                           ('/scan.*', ScanHandler),
-                                          ('/info/(.*)', PageHandler),
+                                          ('/info/([\w\s-]*)', PageHandler),
                                           ], debug=True)
     util.run_wsgi_app(application)
 
