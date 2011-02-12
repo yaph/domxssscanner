@@ -1,0 +1,21 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<h2>About DOMXSS Scanner</h2>
+<p>After reading an article from German PHP Magazin about <a href="http://it-republik.de/php/artikel/DOMXSS---Angriffe-aus-dem-Nirgendwo-3565.html">DOM based XSS attacks</a>, I came up with the idea of building this online tool for scanning Web pages for potential DOM based XSS security vulnerabilities.</p>
+<p>This tool is meant for site owners and Web masters to check their pages source code with DOM XSS sources and sinks being highlighted to facilitate code review.</p>
+<p>DOMXSS Scanner does not try to assess the security of given pages and does not currently include scripts dynamically loaded from other scripts. Those scripts can be scanned by submitting their URLs manually.</p>
+<hr>
+<h2>DOMXSS Scanner Building Blocks</h2>
+<p>DOMXSS Scanner is an application written in <a href="http://www.python.org/">Python</a> and <a href="https://developer.mozilla.org/en/javascript">JavaScript</a> with the help of these great open source libraries:</p>
+<ul>
+<li><a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup Python HTML/XML parser</a></li>
+<li><a href="http://jquery.com/">jQuery JavaScript Library</a></li>
+<li><a href="http://960.gs/">960 CSS Grid System</a></li>
+<li><a href="http://html5boilerplate.com/">HTML5 Boilerplate and included libraries</a></li>
+<li><a href="http://code.google.com/appengine/docs/python/tools/webapp/">The webapp Framework</a> with <a href="http://www.djangoproject.com/">Django Templates</a></li>
+</ul>
+
+<p>DOMXSS Scanner runs on <a href="http://code.google.com/appengine/">Google App Engine</a>.</p>
+<hr>
+{% endblock %}

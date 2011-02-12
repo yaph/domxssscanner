@@ -28,7 +28,12 @@
   <header id="page_header" class="container_12">
     <div class="grid_12">
       <h1 class="title"><a href="/" title="DOMXSS Scanner start page">DOMXSS Scanner</a></h1>
-      {% include 'url_form.html' %}
+      <div id="url_form">
+        <form action="/scan" method="GET">
+        <input class="url" name="url" id="url" type="url" value="http://">
+        <input class="button" type="submit" value="Start scan">
+        </form>
+      </div>
     </div>
   </header>
 
