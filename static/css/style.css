@@ -156,6 +156,7 @@ font-size:1.2em;
 h1 { font-size:2em;}
 h2 { font-size:1.2em;}
 textarea {width:100%;height:300px;}
+p {margin:5px 0;}
 hr {
 color:#000;
 border-color: #222;

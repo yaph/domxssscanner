@@ -45,7 +45,6 @@ class BaseHandler(gae.BaseHandler):
 
 class MainHandler(BaseHandler):
     def get(self):
-        self.set_template_value('title', 'DOMXSS Scanner - Find DOM based XSS Security Vulnerabilities')
         self.generate('text/html', 'index.html')
 
 class ScanHandler(BaseHandler):
@@ -74,7 +73,7 @@ class ScanHandler(BaseHandler):
 
 class PageHandler(BaseHandler):
     def get(self, name):
-        self.set_template_value('title', '%s DOMXSS Scaner' % name)
+        self.set_template_value('title', '%s DOMXSS Scanner' % name)
         self.generate('text/html', 'pages/%s.html' % name)
 
 def main():
