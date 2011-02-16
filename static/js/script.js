@@ -5,7 +5,7 @@ jQuery(function($) {
     for (url in urls) {
       var request_url = "/scan?url=" + encodeURIComponent(urls[url]);
       $.get(request_url, function(data) {
-        $('#content').append(data);
+        $('#responses').append(data);
         DOMXSS.scanResponse($);
       });
     }
