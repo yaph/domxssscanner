@@ -56,11 +56,14 @@ class ScanHandler(BaseHandler):
             self.set_template_value('url', url)
             response = gae.HTTP().request(url)
             if response:
-                # TODO check response type and don't call get_script_urls if javascript
                 html = response.content
                 self.set_template_value('response_text', html)
-                script_urls = self.get_script_urls(url, html)
-                self.set_template_value('script_urls', simplejson.dumps(script_urls))
+
+                # For now only call get_script_urls with HTML or XML files
+                ctype = response.headers['content-type']
+                if ctype.find('html') > 0 or ctype.find('xml') > 0:
+                    script_urls = self.get_script_urls(url, html)
+                    self.set_template_value('script_urls', simplejson.dumps(script_urls))
         else:
             url = ''
 
