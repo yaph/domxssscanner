@@ -1,30 +1,26 @@
 #!/usr/bin/env python
-from inspect import stack
+import unittest
 import os
 import sys
 sys.path.append(os.path.join(os.getcwd(), '..'))
 from domxss import DOMXSS
 
-def test_base_tag():
-    f = open('./base_tag.html', 'r')
-    html = f.read()
-    scripts = DOMXSS().get_script_urls('http://localhost:8080/', html)
-    if "http://localhost:8080/static/js/lib/modernizr-1.6.min.js" == scripts[0]:
-        print success()
-    else:
-        print fail()
+class TestDOMXSS(unittest.TestCase):
 
-def success():
-    print 'Test success: %s' % get_test_name()
+    def setUp(self):
+        self.dxs = DOMXSS()
+        self.url = 'http://localhost:8080/'
 
-def fail():
-    print 'Test fail: %s' % get_test_name()
+    def get_scripts(self, file_name):
+        return self.dxs.get_script_urls(self.url, open(file_name, 'r').read())
 
-def get_test_name():
-    return stack()[2][3]
+    def test_base_tag(self):
+        scripts = self.get_scripts('./base_tag.html')
+        self.assertEqual("http://localhost:8080/static/js/lib/modernizr-1.6.min.js", scripts[0])
 
-def run_tests():
-    test_base_tag()
+    def test_script_count(self):
+        scripts = self.get_scripts('./script_count.html')
+        self.assertEqual(3, len(scripts))
 
 if __name__ == '__main__':
-    run_tests()
+    unittest.main()
