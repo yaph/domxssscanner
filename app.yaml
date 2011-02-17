@@ -3,6 +3,18 @@ version: 1
 runtime: python
 api_version: 1
 
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?tests$
+
 handlers:
 - url: /static
   static_dir: static
@@ -14,6 +26,10 @@ handlers:
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
+
+- url: /tests/.*
+  script: tests/tests.py
+  login: admin
 
 - url: .*
   script: main.py
