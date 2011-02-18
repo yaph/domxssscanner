@@ -14,7 +14,7 @@ class MainHandler(BaseHandler):
 
 class ScanHandler(BaseHandler):
     def get(self):
-        title = 'DOMXSS Scanner - Scan %s'
+        title = 'DOM XSS Scanner - Scan %s'
 
         url = self.get_param('url', '', 'url')
         if url:
@@ -41,7 +41,7 @@ class ScanHandler(BaseHandler):
 
 class PageHandler(BaseHandler):
     def get(self, name):
-        self.set_template_value('title', '%s DOMXSS Scanner' % name)
+        self.set_template_value('title', '%s DOM XSS Scanner' % name)
         self.generate('text/html', 'pages/%s.html' % name)
 
 def main():
