@@ -14,11 +14,10 @@ class MainHandler(BaseHandler):
 
 class ScanHandler(BaseHandler):
     def get(self):
-        title = 'DOM XSS Scanner - Scan %s'
-
         url = self.get_param('url', '', 'url')
         if url:
             self.set_template_value('url', url)
+            self.set_template_value('title', 'DOM XSS Scanner - Scan %s' % url)
             response = gae.HTTP().request(url)
             if response:
                 html = response.content
@@ -29,15 +28,19 @@ class ScanHandler(BaseHandler):
                 if ctype.find('html') > 0 or ctype.find('xml') > 0:
                     script_urls = DOMXSS().get_script_urls(url, html)
                     self.set_template_value('script_urls', simplejson.dumps(script_urls))
-        else:
-            url = ''
 
-        self.set_template_value('title', title % url)
+                if self.is_ajax():
+                    self.generate('text/javascript', 'response.html')
+                else:
+                    self.generate('text/html', 'scan.html')
 
-        if self.is_ajax():
-            self.generate('text/javascript', 'response.html')
+            else:
+                self.set_template_value('error', 'Error: Supplied URL could not be fetched.')
+                self.generate('text/html', 'error.html')
+
         else:
-            self.generate('text/html', 'scan.html')
+            self.set_template_value('error', 'Error: Supplied URL is not valid.')
+            self.generate('text/html', 'error.html')
 
 class PageHandler(BaseHandler):
     def get(self, name):
