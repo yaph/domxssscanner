@@ -3,7 +3,7 @@
 {% block head_scripts %}
   {% if script_urls %}
   <script type="text/javascript">
-    var script_urls = '{{ script_urls }}';
+    var script_urls = '{{ script_urls|safe }}';
   </script>
   {% endif %}
 {% endblock %}
