@@ -47,8 +47,9 @@ class ScanHandler(BaseHandler):
 
 class PageHandler(BaseHandler):
     def get(self, name):
+
         self.set_template_value('title', '%s DOM XSS Scanner' % name)
-        self.generate('text/html', 'pages/%s.html' % name)
+        self.generate('text/html', '%s.html' % name)
 
 def main():
     application = webapp.WSGIApplication([
