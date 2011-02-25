@@ -3,6 +3,7 @@ google.load("feeds", "1");
 function initFeed() {
   var google_rss_url = 'http://news.google.com/news?hl=en&safe=off&prmdo=1&q=xss&um=1&ie=UTF-8&output=rss';
   var feed = new google.feeds.Feed(google_rss_url);
+  feed.setNumEntries(2);
   feed.load(function(result) {
     if (!result.error) {
       var cnt = result.feed.entries.length;
