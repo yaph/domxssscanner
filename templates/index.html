@@ -36,7 +36,12 @@
 <div class="grid_4">
 <h2>Share DOM XSS Scanner</h2>
 <div class="social_widget"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.domxssscanner.com%2F&amp;layout=standard&amp;show_faces=true&amp;width=300&amp;action=like&amp;colorscheme=dark&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px;" allowTransparency="true"></iframe></div>
+<div class="social_widget"><g:plusone></g:plusone></div>
 </div>
 
 </div>
+{% endblock %}
+
+{% block body_scripts %}
+<script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
 {% endblock %}
