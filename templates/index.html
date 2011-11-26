@@ -17,7 +17,7 @@
 
 <div id="featured" class="container_12 clearfix">
 
-<div class="grid_4">
+<div class="grid_6">
 <h2>Security Resources and Tools</h2>
 <ul>
 <li><a href="/info/articles">DOM XSS articles and resources</a></li>
@@ -26,24 +26,15 @@
 </ul>
 </div>
 
-<div class="grid_4">
+<div class="grid_6">
 <h2>XSS News from Google</h2>
 <div id="google_rss"></div>
 <script src="https://www.google.com/jsapi?key=ABQIAAAAmrEfcOrtp2tfQZWrdKRqiRRgLGtqzDpo7rXzawFru2yHfjDfOBTo1lOkqdzcPv85A2XGVWrvNe1N6w"></script>
 <script src="/static/js/google_rss.js"></script>
 </div>
 
-<div class="grid_4">
-<h2>Share DOM XSS Scanner</h2>
-<div class="social_widget"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.domxssscanner.com%2F&amp;layout=standard&amp;show_faces=true&amp;width=300&amp;action=like&amp;colorscheme=dark&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px;" allowTransparency="true"></iframe></div>
-<div class="social_widget"><g:plusone></g:plusone></div>
 </div>
 
-</div>
-{% endblock %}
+<hr>
 
-{% block body_scripts %}
-<script type="text/javascript">
-(function(){var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();
-</script>
 {% endblock %}

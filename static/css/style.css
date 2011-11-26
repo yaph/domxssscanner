@@ -200,10 +200,6 @@ width:60%;
 #url_form .button {
 margin:10px 0;
 }
-.social_widget {
-margin:5px 0 10px;
-text-align:center;
-}
 /* highlighted response text */
 .response {
 width:100%;
@@ -222,6 +218,15 @@ font: 1.18em monospace;
 }
 .domxss_sink {background-color:#9B7D00;}
 .domxss_source {background-color:#900;}
+
+#social {
+margin: 1% 0 0 20%;
+width: 60%;
+}
+.FlattrButton {
+float:left;
+margin-left:1em;
+}
 
 /*
  * Non-semantic helper classes: please define your styles before this section.

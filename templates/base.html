@@ -18,6 +18,17 @@
   <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
   <script src="/static/js/lib/modernizr-1.6.min.js"></script>
 
+  <script type="text/javascript">
+  /* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+    })();
+  /* ]]> */
+  </script>
   {% block head_scripts %}{% endblock %}
 
 </head>
@@ -32,6 +43,7 @@
         <input class="url" name="url" id="url" type="url" value="http://">
         <input class="button" type="submit" value="Start scan">
         </form>
+        <p>Discover DOM XSS Security Flaws</p>
       </div>
     </div>
   </header>
@@ -39,22 +51,42 @@
   <div id="main" role="main" class="container_12">
     <div id="content" class="grid_12">
     {% block content %}{% endblock %}
+    {% block content_bottom %}{% endblock %}
     </div>
   </div>
 
   {% block featured %}{% endblock %}
 
   <footer id="page_footer" class="container_12">
-    <p class="small"><a href="/" title="DOM XSS Scanner start page">DOM XSS Scanner</a> is an <a href="https://github.com/yaph/domxssscanner">open source tool</a> for finding potential DOM based XSS security vulnerabilities created by <a href="http://www.ramiro.org/">Ramiro Gómez</a></p>
+    <div class="grid_12"><p class="small "><a href="/" title="DOM XSS Scanner start page">DOM XSS Scanner</a> is an <a href="https://github.com/yaph/domxssscanner">open source tool</a> for finding potential DOM based XSS security vulnerabilities created by <a href="http://www.ramiro.org/">Ramiro Gómez</a></p></div>
+    <div id="social" class="grid_12">
+      <div class="addthis_toolbox addthis_default_style">
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        <a class="addthis_button_tweet"></a>
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        <a class="addthis_counter addthis_pill_style"></a>
+        <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://www.domxssscanner.com/"></a><noscript><a href="http://flattr.com/thing/441785/DOM-XSS-Scanner" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
+      </div>
+    </div>
   </footer>
 </div>
 
-{% block body_scripts %}{% endblock %}
-
+<script type="text/javascript">
+var addthis_config = {
+    services_custom: {
+            name: "Flattr",
+            url: "http://flattr.com/submit/auto?url={{url}}&title={{title}}&user_id=rg&category=software&language=en_GB",
+            icon: "http://api.flattr.com/button/flattr-badge-large.png"}
+}
+</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4ed01f714e438a38"></script>
 <script type="text/javascript">
 var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-5102014-6']);_gaq.push(['_trackPageview']);_gaq.push(['_trackPageLoadTime']);
 (function(){var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
 </script>
+
+{% block body_scripts %}{% endblock %}
+
 </body>
 </html>
 {% endspaceless %}
