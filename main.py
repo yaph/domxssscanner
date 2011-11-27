@@ -19,7 +19,12 @@ class ScanHandler(BaseHandler):
             response = HTTP().request(url)
             if response:
                 html = response.content
-                self.set_template_value('response_text', html.decode('utf8'))
+                try:
+                    self.set_template_value('response_text', html.decode('utf8'))
+                except UnicodeDecodeError:
+                    self.set_template_value('error', 'Error: Content could not be parsed.')
+                    self.generate('text/html', '404.html')
+                    return
 
                 # For now only call get_script_urls with HTML or XML files
                 ctype = response.headers['content-type']
