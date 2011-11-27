@@ -3,9 +3,13 @@ jQuery(function($) {
   if ("undefined" != typeof script_urls) {
     var urls = $.parseJSON(script_urls)
     for (url in urls) {
-      $.get('/scan?url=' + encodeURIComponent(urls[url]), function(data) {
-        $('#responses').append(data);
-        DOMXSS.scanResponse($);
+      $.ajax({
+          url: '/scan?url=' + encodeURIComponent(urls[url]),
+          dataType: 'html',
+          success: function(data) {
+            $('#responses').append(data);
+            DOMXSS.scanResponse($);
+          }
       });
     }
   }
