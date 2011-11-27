@@ -1,7 +1,14 @@
 application: domxssscanner
 version: 1
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
+
+libraries:
+- name: jinja2
+  version: latest
+- name: markupsafe
+  version: latest
 
 skip_files:
 - ^(.*/)?app\.yaml
@@ -28,4 +35,4 @@ handlers:
   upload: static/robots.txt
 
 - url: .*
-  script: main.py
+  script: main.app
