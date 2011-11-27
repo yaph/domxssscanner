@@ -143,10 +143,7 @@ body, select, input, textarea {
 body {
 font-size:1.1em;
 color:#336c3d;
-background: #1c1c1c; /* old browsers */
-background: -moz-linear-gradient(top, #1c1c1c 0%, #0a0a0a 100%); /* firefox */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1c1c1c), color-stop(100%,#0a0a0a)); /* webkit */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1c1c', endColorstr='#0a0a0a',GradientType=0 ); /* ie */
+background: #0a0a0a;
 }
 /* headers (h1,h2,etc) have no default font-size or margin. define those yourself. */
 h1,h2,h3,h4,h5,h6 {
@@ -170,8 +167,10 @@ font-family: monotype;
 font-style: oblique;
 letter-spacing:.06em;
 }
+.title {
+font-size:2.2em;
+}
 .title a {
-font-size:1.3em;
 text-decoration:none;
 color:#336c3d;
 }

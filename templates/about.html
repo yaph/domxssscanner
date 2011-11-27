@@ -1,4 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'post.html' %}
+
+{% block title %}About DOM XSS Scanner | DOM XSS Scanner{% endblock %}
 
 {% block head_scripts %}
 <link href="https://plus.google.com/117825779096468317426" rel="publisher" /><script type="text/javascript">
@@ -10,8 +12,9 @@ s.parentNode.insertBefore(po, s);
 })();</script>
 {% endblock %}
 
+{% block header %}<h1 class="title">About DOM XSS Scanner</h1>{% endblock %}
+
 {% block content %}
-<h2>About DOM XSS Scanner</h2>
 <p>After reading an article from German PHP Magazin about <a href="http://it-republik.de/php/artikel/DOMXSS---Angriffe-aus-dem-Nirgendwo-3565.html">DOM based XSS attacks</a>, I came up with the idea of building this online tool for scanning Web pages for potential DOM based XSS security vulnerabilities.</p>
 <p>This tool is meant for site owners and Web masters to check their pages source code with DOM XSS sources and sinks being highlighted to facilitate code review.</p>
 <p>DOM XSS Scanner does not try to assess the security of given pages and does not currently include scripts dynamically loaded from other scripts. Those scripts can be scanned by submitting their URLs manually.</p>

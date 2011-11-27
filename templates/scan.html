@@ -8,6 +8,8 @@
   {% endif %}
 {% endblock %}
 
+{% block header %}<h1 class="title">DOM XSS Scan Results</h1>{% endblock %}
+
 {% block content %}
 <div id="responses">
 {% include 'response.html' %}
@@ -16,6 +18,7 @@
 
 {% block body_scripts %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="/static/js/lib/jquery-1.5.0.js"%3E%3C/script%3E'))</script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script src="/static/js/script.js"></script>
+<script src="/static/js/dxsform.js"></script>
 {% endblock %}

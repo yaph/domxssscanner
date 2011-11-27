@@ -3,8 +3,7 @@ jQuery(function($) {
   if ("undefined" != typeof script_urls) {
     var urls = $.parseJSON(script_urls)
     for (url in urls) {
-      var request_url = "/scan?url=" + encodeURIComponent(urls[url]);
-      $.get(request_url, function(data) {
+      $.get('/scan?url=' + encodeURIComponent(urls[url]), function(data) {
         $('#responses').append(data);
         DOMXSS.scanResponse($);
       });

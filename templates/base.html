@@ -37,6 +37,7 @@
 <div id="container">
   <header id="page_header" class="container_12">
     <div class="grid_12">
+      {% block header %}
       <h1 class="title"><a href="/" title="DOM XSS Scanner start page">DOM XSS Scanner</a></h1>
       <div id="url_form">
         <form action="/scan" method="GET">
@@ -46,6 +47,7 @@
         <p class="small">Discover DOM XSS Security Flaws</p>
         <hr>
       </div>
+      {% endblock %}
     </div>
   </header>
 

@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-{% block content %}{% endblock %}
-
 {% block content_bottom %}
 <div id="disqus_thread"></div>
 <script type="text/javascript">
@@ -15,4 +13,9 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 <hr>
+{% endblock %}
+
+{% block body_scripts %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/static/js/dxsform.js"></script>
 {% endblock %}
