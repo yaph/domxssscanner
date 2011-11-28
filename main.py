@@ -18,19 +18,28 @@ class ScanHandler(BaseHandler):
             self.set_template_value('title', 'DOM XSS Scanner - Scan %s' % url)
             response = HTTP().request(url)
             if response:
-                html = response.content
-                try:
-                    self.set_template_value('response_text', html.decode('utf8'))
-                except UnicodeDecodeError:
-                    self.set_template_value('error', 'Error: Content could not be parsed.')
-                    self.generate('text/html', '404.html')
-                    return
+                content = response.content
+                encoding = False
+                dxs = DOMXSS()
 
-                # For now only call get_script_urls with HTML or XML files
-                ctype = response.headers['content-type']
-                if ctype.find('html') > 0 or ctype.find('xml') > 0:
-                    script_urls = DOMXSS().get_script_urls(url, html)
+                # try to determine charset from request headers
+                ctype = response.headers['content-type'].strip()
+                pos = ctype.find('charset=')
+                if pos > 0:
+                    encoding = ctype[pos+8:len(ctype)].lower()
+
+                if ctype.startswith('text/html') or ctype.startswith('text/xml'):
+                    # try to determine charset from html if not set before
+                    if not encoding:
+                        encoding = dxs.get_charset_from_html(content)
+                    script_urls = dxs.get_script_urls(url, content)
                     self.set_template_value('script_urls', json.dumps(script_urls))
+
+                if not encoding:
+                    encoding = 'utf-8'
+
+                response_text = content.decode(encoding, 'ignore')
+                self.set_template_value('response_text', response_text)
 
                 if self.is_ajax():
                     self.generate('text/javascript', 'response.html')

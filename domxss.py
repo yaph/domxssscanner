@@ -8,6 +8,9 @@ class DOMXSS():
     re_domxss_sources = re.compile('(location\s*[\[.])|([.\[]\s*["\']?\s*(arguments|dialogArguments|innerHTML|write(ln)?|open(Dialog)?|showModalDialog|cookie|URL|documentURI|baseURI|referrer|name|opener|parent|top|content|self|frames)\W)|(localStorage|sessionStorage|Database)')
     re_domxss_sinks = re.compile('((src|href|data|location|code|value|action)\s*["\'\]]*\s*\+?\s*=)|((replace|assign|navigate|getResponseHeader|open(Dialog)?|showModalDialog|eval|evaluate|execCommand|execScript|setTimeout|setInterval)\s*["\'\]]*\s*\()')
 
+    def get_charset_from_html(self, html):
+        return BeautifulSoup(html).originalEncoding
+
     def get_script_urls(self, url, html):
         script_urls = []
         scripts = BeautifulSoup(html, parseOnlyThese=SoupStrainer('script'))
