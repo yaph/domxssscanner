@@ -4,13 +4,14 @@
 <!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
 <!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
+{% block head %}<head>{% endblock %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>{% block title %}{{ title|escape }}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="DOM XSS Scanner is an online tool for finding potential DOM based XSS security vulnerabilities in the source code of Web pages and included JavaScript files.">
   <meta name="google-site-verification" content="XoEMsQskIl_bodjTm5nvSJhqwpGgcsNuxxoGYHpN7mY">
+  {% block meta %}{% endblock %}
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="stylesheet" href="/static/css/style.css">
   <link rel="stylesheet" href="/static/css/lib/960.css">
