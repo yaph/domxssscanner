@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ error}}{% endblock %}
+{% block title %}{{ error|escape }}{% endblock %}
 
-{% block content %}{{ error}}{% endblock %}
+{% block content %}{{ error|escape }}{% endblock %}

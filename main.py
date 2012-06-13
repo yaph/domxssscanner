@@ -11,7 +11,18 @@ class MainHandler(BaseHandler):
 
 
 class ScanHandler(BaseHandler):
+
+    def error(self, message):
+        self.set_template_value('error', message)
+        self.set_template_value('title', message)
+        if self.is_ajax():
+            self.generate('text/html', 'error.html')
+        else:
+            self.generate('text/html', '404.html')
+
+
     def get(self):
+        self.jinja_env.cache = None
         url = self.get_param('url', '', 'url')
         if url:
             self.set_template_value('url', url)
@@ -47,12 +58,10 @@ class ScanHandler(BaseHandler):
                     self.generate('text/html', 'scan.html')
 
             else:
-                self.set_template_value('error', 'Error: Supplied URL could not be fetched.')
-                self.generate('text/html', 'error.html')
+                self.error('Error: Supplied URL could not be fetched.')
 
         else:
-            self.set_template_value('error', 'Error: Supplied URL is not valid.')
-            self.generate('text/html', 'error.html')
+            self.error('Error: Supplied URL is not valid.')
 
 
 class PageHandler(BaseHandler):
