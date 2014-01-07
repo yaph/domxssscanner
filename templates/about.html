@@ -2,20 +2,10 @@
 
 {% block title %}About DOM XSS Scanner | DOM XSS Scanner{% endblock %}
 
-{% block head_scripts %}
-<link href="https://plus.google.com/117825779096468317426" rel="publisher" /><script type="text/javascript">
-(function() 
-{var po = document.createElement("script");
-po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
-var s = document.getElementsByTagName("script")[0];
-s.parentNode.insertBefore(po, s);
-})();</script>
-{% endblock %}
-
 {% block header %}<h1 class="title">About DOM XSS Scanner</h1>{% endblock %}
 
 {% block content %}
-<p>After reading an article from German PHP Magazin about <a href="http://it-republik.de/php/artikel/DOMXSS---Angriffe-aus-dem-Nirgendwo-3565.html">DOM based XSS attacks</a>, I came up with the idea of building this online tool for scanning Web pages for potential DOM based cross-site scripting (XSS) security vulnerabilities.</p>
+<p>After reading an article from German PHP Magazin about <a href="http://phpmagazin.de/DOMXSS-Angriffe-aus-dem-Nirgendwo-3565.html">DOM based XSS attacks</a>, I came up with the idea of building this online tool for scanning Web pages for potential DOM based cross-site scripting (XSS) security vulnerabilities.</p>
 <p>This tool is meant for site owners and Web masters to check their pages source code with DOM XSS sources and sinks being highlighted to facilitate code review.</p>
 <p>DOM XSS Scanner does not try to assess the security of given pages and does not currently include scripts dynamically loaded from other scripts. Those scripts can be scanned by submitting their URLs manually.</p>
 <hr>
@@ -25,7 +15,7 @@ s.parentNode.insertBefore(po, s);
 <h2>DOM XSS Scanner Coverage</h2>
 <p>Coverage of the DOM XSS Scanner tool elsewhere on the Web:</p>
 <ul>
-<li><a href="http://it-republik.de/php/news/DOMXSS-Scanner-Das-war-eine-spontane-Idee.-058380.html">Interview in the online edition of German PHP Magazin</a></li>
+<li><a href="http://phpmagazin.de/DOMXSS-Scanner%3A-%26quot%3BDas-war-eine-spontane-Idee.%26quot%3B-058380.html">Interview in the online edition of German PHP Magazin</a></li>
 </ul>
 <hr>
 <h2>DOM XSS Scanner Building Blocks</h2>
@@ -38,21 +28,7 @@ Building DOM XSS Scanner was straightforward thanks to the following great open 
 <li><a href="http://html5boilerplate.com/">HTML5 Boilerplate and included libraries</a></li>
 <li><a href="http://code.google.com/appengine/docs/python/tools/webapp/">The webapp Framework</a> with <a href="http://www.djangoproject.com/">Django Templates</a></li>
 </ul>
-
-<p>This site uses icons from the <a href="http://www.woothemes.com/2009/02/wp-woothemes-ultimate-icon-set-first-release/">WP WooThemes Ultimate Icon Set</a> and runs on <a href="http://code.google.com/appengine/">Google App Engine</a>.</p>
-<p>DOMXSSscanner.com has <a href="http://www.google.com/analytics/">Google Analytics</a> tracking enabled, if you wish you can <a href="http://tools.google.com/dlpage/gaoptout">opt out of Google Analytics</a> using the available browser extensions.</p>
+<p>DOMXSSscanner.com has Google Analytics enabled, if you wish you can <a href="http://tools.google.com/dlpage/gaoptout">opt out of Google Analytics</a> using the available browser extensions.</p>
 <hr>
 <a href="http://github.com/yaph/domxssscanner"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork domxsssxanner on GitHub"></a>
-{% endblock %}
-
-{% block featured %}
-<div class="container_12 clearfix">
-<div class="grid_6">
-<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fdomxssscanner&amp;width=440&amp;height=160&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=false&amp;appId=26683324727" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:440px; height:160px;" allowTransparency="true"></iframe>
-</div>
-<div class="grid_6">
-<div class="g-plus" data-href="https://plus.google.com/117825779096468317426" data-size="badge"></div>
-</div>
-</div>
-<hr>
 {% endblock %}

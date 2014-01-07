@@ -1,14 +1,5 @@
 {% extends 'base.html' %}
 
-{% block head %}
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-{% endblock %}
-
-{% block meta %}
-<meta property="fb:app_id" content="101729863653">
-<meta property="og:type" content="article">
-{% endblock %}
-
 {% block title %}DOM XSS Scanner - Find DOM based XSS Security Vulnerabilities{% endblock %}
 
 {% block content %}
@@ -23,44 +14,30 @@
 {% endblock %}
 
 {% block featured %}
-
 <div id="featured" class="container_12 clearfix">
-
-<div class="grid_4">
-<h2>Security Resources and Tools</h2>
-<ul>
-<li><a href="/info/articles">DOM XSS articles and resources</a></li>
-<li><a href="/info/videos">DOM XSS videos</a></li>
-<li><a href="/info/tools">Free Security Tools</a></li>
-<li><a href="/info/security">General Security Resources</a></li>
-</ul>
+    <div class="grid_4">
+        <h2>Security Resources &amp; Tools</h2>
+        <ul>
+        <li><a href="/info/articles">DOM XSS articles and resources</a></li>
+        <li><a href="/info/videos">DOM XSS videos</a></li>
+        <li><a href="/info/tools">Free Security Tools</a></li>
+        <li><a href="/info/security">General Security Resources</a></li>
+        </ul>
+    </div>
+    <div class="grid_4">
+        <h2>Web Security Books</h2>
+        <ul>
+        <li><a href="http://www.amazon.com/gp/product/0124166008/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=0124166008&linkCode=as2&tag=dxs-20">The Basics of Web Hacking: Tools and Techniques to Attack the Web</a></li>
+        <li><a href="http://www.amazon.com/gp/product/1118026470/ref=as_li_ss_tl?ie=UTF8&tag=dxs-20&linkCode=as2&camp=217145&creative=399373&creativeASIN=1118026470">The Web Application Hacker's Handbook: Finding and Exploiting Security Flaws</a></li>
+        </ul>
+        <div class="right"><a href="/info/security#security-books">more security books</a></div>
+    </div>
+    <div class="grid_4">
+        <h2>XSS News Feed</h2>
+        <div id="google_rss"></div>
+        <script src="https://www.google.com/jsapi?key=ABQIAAAAmrEfcOrtp2tfQZWrdKRqiRRgLGtqzDpo7rXzawFru2yHfjDfOBTo1lOkqdzcPv85A2XGVWrvNe1N6w"></script>
+        <script src="/static/js/google_rss.js"></script>
+        </div>
+    <hr>
 </div>
-
-<div class="grid_4">
-<h2>XSS News from Various Sources</h2>
-<div id="google_rss"></div>
-<script src="https://www.google.com/jsapi?key=ABQIAAAAmrEfcOrtp2tfQZWrdKRqiRRgLGtqzDpo7rXzawFru2yHfjDfOBTo1lOkqdzcPv85A2XGVWrvNe1N6w"></script>
-<script src="/static/js/google_rss.js"></script>
-</div>
-
-<div class="grid_4">
-<h2>User Recommendations</h2>
-<div class="fb-activity" data-site="http://www.domxssscanner.com/" data-app-id="101729863653" data-width="300" data-height="150" data-header="false" data-colorscheme="dark" data-border-color="black" data-font="arial" data-recommendations="true"></div>
-</div>
-
-</div>
-
-<hr>
-
-{% endblock %}
-
-{% block body_scripts %}
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=101729863653";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}
