@@ -1,4 +1,6 @@
-[DOM XSS Scanner](http://www.domxssscanner.com/) is an online tool for scanning web pages and JavaScript code for potential DOM based XSS security vulnerabilities.
+[DOM XSS Scanner](http://www.domxssscanner.com/) is an online tool that
+facilitates code review of web pages and JavaScript code for potential
+DOM based XSS security vulnerabilities.
 
 ## Sample Results Page
 
