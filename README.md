@@ -2,7 +2,8 @@
 
 ## Sample Results Page
 
-![Sample Results Page](/static/img/domxssscanner-results-preview.jpg)
+![Sample Results Page](/static/img/domxssscanner-results.jpg)
+
 [Check your Web page](http://www.domxssscanner.com/)
 
 ## TODOs
