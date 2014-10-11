@@ -8,4 +8,4 @@ DOM based XSS security vulnerabilities.
 
 [Check your Web page](http://www.domxssscanner.com/)
 
-Learn more about the tool on the project's [about page](http://www.domxssscanner.com/info/about)
+Learn more about the tool on the project's [about page](http://www.domxssscanner.com/info/about).
