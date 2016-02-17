@@ -51,26 +51,20 @@
   {% block featured %}{% endblock %}
 
   <footer id="page_footer" class="container_12">
-    <div class="grid_12"><p class="small"><a href="/" title="DOM XSS Scanner start page">DOM XSS Scanner</a> is an <a href="https://github.com/yaph/domxssscanner">open source tool</a> for finding potential DOM based XSS security vulnerabilities created by <a href="http://ramiro.org/">Ramiro Gómez</a> <a href="https://twitter.com/yaph">(@yaph)</a></p></div>
-    <div id="social" class="grid_12">
-<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-<a class="addthis_button_preferred_1"></a>
-<a class="addthis_button_preferred_2"></a>
-<a class="addthis_button_preferred_3"></a>
-<a class="addthis_button_preferred_4"></a>
-<a class="addthis_button_compact"></a>
-<a class="addthis_counter addthis_bubble_style"></a>
-</div>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4ed01f714e438a38"></script>
+    <div class="grid_12">
+        <p class="small">© 2016 <a href="http://ramiro.org/">Ramiro Gómez</a>. DOM XSS Scanner is a tool for finding potential DOM based XSS security vulnerabilities.<br><a href="/info/about">About</a> • <a href="/info/legal">Legal info</a></p>
     </div>
   </footer>
 </div>
 <script type="text/javascript">
-var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-5102014-6']);_gaq.push(['_trackPageview']);_gaq.push(['_trackPageLoadTime']);
-(function(){var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-5102014-6', 'auto');
+ga('send', 'pageview');
+(function(c,a){function d(){var e=a.getElementsByTagName("a");var f=[];for(var g=0;g<e.length;++g){var h=e[g];if(h.host!=c.location.host){f.push(h)}}return f}function b(f){var e=f.srcElement||f.target;while(e&&(typeof e.tagName=="undefined"||e.tagName.toLowerCase()!="a"||!e.href)){e=e.parentNode}if(!e||!e.href){return}if(c.ga){ga("send","event","Outbound link","Click",e.href)}if(!e.target||e.target.match(/^_(self|parent|top)$/i)){setTimeout(function(){a.location.href=e.href},150);if(f.preventDefault){f.preventDefault()}else{f.returnValue=false}}}c.addEventListener("load",function(){var e=d();for(var f in e){e[f].addEventListener("click",b)}})}(window,document));
 </script>
-
 {% block body_scripts %}{% endblock %}
 </body>
 </html>
